@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+  Dernières ressources ajoutées
+{% endblock %}
+
+{% block contenuPage %}
+
+{% set debutNouvelleLigne = true %}
+
+    {% for ressourceCourante in ressources %}
+
+    {# Si  on est en début de ligne, on crée un nouveau composant card-deck#}
+    {% if debutNouvelleLigne == true %}
+      <div class="card-deck">
+      {% set debutNouvelleLigne = false %}
+    {% endif %}
+
+    {#Afficher une carte pour la ressource courante #}
+    <div class="card">
+      <a href="{{path('openclassdut_ressource',{id:ressourceCourante.id})}}">
+        <img class="card-img-top" src="{{ressourceCourante.urlVignette}}">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{ressourceCourante.titre}}</h5>
+        <p class="card-text">{{ressourceCourante.descriptif}}</p>
+        <p class="card-text">
+          <small class="text-muted">Date d'ajout : {{ressourceCourante.dateAjout | date("d/m/Y")}}</small>
+        </p>
+      </div>
+    </div>
+
+    {# Vérifier s'il faut passer à la ligne suivante (toutes les 3 ressources affihées) #}
+    {% if loop.index % 3 == 0 %}
+      </div>
+      <br />
+      {% set debutNouvelleLigne = true %}
+    {% endif %}
+
+    {% endfor %}
+
+
+
+{% endblock %}

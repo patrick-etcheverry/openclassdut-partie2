@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}
+{{ressource.titre}}
+{% endblock %}
+
+{% block contenuPage %}
+<ul class="list-group">
+  <li class="list-group-item center">
+    <img class="rounded mx-auto d-block" src="{{ressource.urlVignette}}" width="400px">
+  </li>
+  <li class="list-group-item"><strong>Descriptif :</strong> {{ressource.descriptif}}</li>
+  <li class="list-group-item"><strong>Date d'ajout :</strong> {{ressource.dateAjout | date("d/m/Y")}}</li>
+  <li class="list-group-item"><strong>Type de ressource :</strong> <i class="{{ressource.typeRessource.icone}}"></i>{{ressource.typeRessource.nomType}}</li>
+  <li class="list-group-item"><strong>Modules concernés :</strong>
+     {% for moduleCourant in ressource.modules %}
+       {{moduleCourant.code}} - {{moduleCourant.titre}} (semestre {{moduleCourant.semestre}})
+       {% if loop.last == false %}
+       ,
+       {% endif %}
+     {% endfor %}
+   </li>
+  <li class="list-group-item"><a href="{{ressource.urlRessource}}">Télecharger cette ressource</a></li>
+</ul>
+{% endblock %}
