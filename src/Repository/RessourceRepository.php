@@ -19,6 +19,24 @@ class RessourceRepository extends ServiceEntityRepository
         parent::__construct($registry, Ressource::class);
     }
 
+
+    /**
+     * @return Ressource[] Returns an array of Ressource objects
+     */
+
+    public function findBySemestre($semestre)
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.modules', 'm')
+            ->andWhere('m.semestre = :numSemestre')
+            ->setParameter('numSemestre', $semestre)
+            ->orderBy('r.dateAjout', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
     /**
      * @return Ressource[] Returns an array of Ressource objects
      */
