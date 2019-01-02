@@ -16,7 +16,7 @@ class OpenclassdutController extends AbstractController
     public function index(RessourceRepository $repositoryRessource)
     {
         // Récupérer les ressources enregistrées en BD
-        $ressources = $repositoryRessource->findByDateAjout();
+        $ressources = $repositoryRessource->findByDateAjoutDql();
 
         // Envoyer les ressources récupérées à la vue chargée de les afficher
         return $this->render('openclassdut/index.html.twig', ['ressources'=>$ressources]);

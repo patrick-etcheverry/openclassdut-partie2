@@ -33,6 +33,28 @@ class RessourceRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * @return Ressource[] Returns an array of Ressource objects
+     */
+
+    public function findByDateAjoutDql()
+    {
+       // Récupérer le gestionnaire d'entité
+       $entityManager = $this->getEntityManager();
+
+       // Construction de la requêtemp
+       $requete = $entityManager->createQuery(
+         'SELECT r
+          FROM App\Entity\Ressource r
+          ORDER BY r.dateAjout DESC'
+       );
+
+       // Exécuter la requête et retourner les résultats
+       return $requete->execute();
+    }
+
+
+
     /*
     public function findOneBySomeField($value): ?Ressource
     {
