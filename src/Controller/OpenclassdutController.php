@@ -28,8 +28,19 @@ class OpenclassdutController extends AbstractController
      */
     public function ajouterRessource()
     {
+        //Création d'une ressource vierge qui sera remplie par le formulaire
+        $ressource = new Ressource();
+
+        // Création du formulaire permettant de saisir une ressource
+        $formulaireRessource = $this->createFormBuilder($ressource)
+        ->add('titre')
+        ->add('descriptif')
+        ->add('urlRessource')
+        ->add('urlVignette')
+        ->getForm();
+
         // Afficher la page présentant le formulaire d'ajout d'une ressource
-        return $this->render('openclassdut/ajoutRessource.html.twig');
+        return $this->render('openclassdut/ajoutRessource.html.twig',['vueFormulaire' => $formulaireRessource->createView()]);
     }
 
 
