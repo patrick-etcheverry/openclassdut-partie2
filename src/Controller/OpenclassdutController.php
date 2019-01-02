@@ -24,6 +24,16 @@ class OpenclassdutController extends AbstractController
 
 
     /**
+     * @Route("/ressources/ajouter", name="openclassdut_ajoutRessource")
+     */
+    public function ajouterRessource()
+    {
+        // Afficher la page présentant le formulaire d'ajout d'une ressource
+        return $this->render('openclassdut/ajoutRessource.html.twig');
+    }
+
+
+    /**
      * @Route("/ressources/semestre{semestre}", name="openclassdut_ressources_semestre")
      */
     public function ressourcesParSemestre(RessourceRepository $repositoryRessource, $semestre)
