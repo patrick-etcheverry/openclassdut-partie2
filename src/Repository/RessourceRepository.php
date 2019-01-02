@@ -19,22 +19,19 @@ class RessourceRepository extends ServiceEntityRepository
         parent::__construct($registry, Ressource::class);
     }
 
-//    /**
-//     * @return Ressource[] Returns an array of Ressource objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Ressource[] Returns an array of Ressource objects
+     */
+
+    public function findByDateAjout()
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('r.dateAjout', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Ressource
