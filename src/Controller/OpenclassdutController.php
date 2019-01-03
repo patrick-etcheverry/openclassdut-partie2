@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Ressource;
 use App\Repository\RessourceRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class OpenclassdutController extends AbstractController
 {
@@ -25,7 +27,7 @@ class OpenclassdutController extends AbstractController
     /**
      * @Route("/ressources/ajouter", name="openclassdut_ajoutRessource")
      */
-    public function ajouterRessource()
+    public function ajouterRessource(Request $request, ObjectManager $manager)
     {
         //Création d'une ressource vierge qui sera remplie par le formulaire
         $ressource = new Ressource();
@@ -37,6 +39,23 @@ class OpenclassdutController extends AbstractController
         ->add('urlRessource')
         ->add('urlVignette')
         ->getForm();
+
+        /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
+        dans cette requête contient des variables titre, descriptif, etc. alors la méthode handleRequest()
+        récupère les valeurs de ces variables et les affecte à l'objet $ressource*/
+        $formulaireRessource->handleRequest($request);
+
+         if ($formulaireRessource->isSubmitted() )
+         {
+            // Mémoriser la date d'ajout de la ressources
+            $ressource->setDateAjout(new \dateTime());
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($ressource);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('openclassdut_accueil');
+         }
 
         // Afficher la page présentant le formulaire d'ajout d'une ressource
         return $this->render('openclassdut/ajoutRessource.html.twig',['vueFormulaire' => $formulaireRessource->createView()]);
