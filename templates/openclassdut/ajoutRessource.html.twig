@@ -9,13 +9,13 @@ Saisissez les caractéristiques de la ressource que vous souhaitez partager.
 
 {{ form_start(vueFormulaire) }}
 
-{{ form_row(vueFormulaire.titre) }}
+{{ form_row(vueFormulaire.titre, {'attr':{'placeholder':"Titre de la ressource..."}})}}
 
-{{ form_row(vueFormulaire.descriptif) }}
+{{ form_row(vueFormulaire.descriptif, {'attr':{'placeholder':"Descriptif de la ressource..."}})}}
 
-{{ form_row(vueFormulaire.urlVignette) }}
+{{ form_row(vueFormulaire.urlVignette, {'attr':{'placeholder':"Url de l'image présentant la ressource..."}})}}
 
-{{ form_row(vueFormulaire.urlRessource) }}
+{{ form_row(vueFormulaire.urlRessource, {'attr':{'placeholder':"Url de la ressource..."}})}}
 
 {{ form_end(vueFormulaire) }}
 
