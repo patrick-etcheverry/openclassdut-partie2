@@ -7,5 +7,17 @@ Ajout d'une ressource pédagogique
 {% block contenuPage %}
 Saisissez les caractéristiques de la ressource que vous souhaitez partager.
 
-{{ form(vueFormulaire) }}
+{{ form_start(vueFormulaire) }}
+
+{{ form_row(vueFormulaire.titre) }}
+
+{{ form_row(vueFormulaire.descriptif) }}
+
+{{ form_row(vueFormulaire.urlVignette) }}
+
+{{ form_row(vueFormulaire.urlRessource) }}
+
+{{ form_end(vueFormulaire) }}
+
+
 {% endblock %}
