@@ -6,9 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Ressource;
 use App\Repository\RessourceRepository;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 class OpenclassdutController extends AbstractController
 {
@@ -35,10 +32,10 @@ class OpenclassdutController extends AbstractController
 
         // Création du formulaire permettant de saisir une ressource
         $formulaireRessource = $this->createFormBuilder($ressource)
-        ->add('titre', TextType::class)
-        ->add('descriptif', TextareaType::class)
-        ->add('urlRessource', UrlType::class)
-        ->add('urlVignette', UrlType::class)
+        ->add('titre')
+        ->add('descriptif')
+        ->add('urlRessource')
+        ->add('urlVignette')
         ->getForm();
 
         // Afficher la page présentant le formulaire d'ajout d'une ressource
