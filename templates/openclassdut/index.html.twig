@@ -24,6 +24,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ressourceCourante.titre}}</h5>
         <p class="card-text">{{ressourceCourante.descriptif}}</p>
+        <a class="nav-link" href="{{path('openclassdut_modifRessource',{'id':ressourceCourante.id})}}">Modifier</a>
         <p class="card-text">
           <small class="text-muted">Date d'ajout : {{ressourceCourante.dateAjout | date("d/m/Y")}}</small>
         </p>

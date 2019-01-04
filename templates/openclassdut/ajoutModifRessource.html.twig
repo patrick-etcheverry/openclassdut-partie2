@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block titrePage %}
+{% if action == "ajouter" %}
 Ajout d'une ressource pédagogique
+{% else %}
+Modifier une ressource pédagogique
+{% endif %}
 {% endblock %}
 
 {% block contenuPage %}
