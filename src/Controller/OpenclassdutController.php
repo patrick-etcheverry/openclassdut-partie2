@@ -8,6 +8,8 @@ use App\Entity\Ressource;
 use App\Repository\RessourceRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Form\RessourceType;
+
 
 class OpenclassdutController extends AbstractController
 {
@@ -33,12 +35,7 @@ class OpenclassdutController extends AbstractController
         $ressource = new Ressource();
 
         // Création du formulaire permettant de saisir une ressource
-        $formulaireRessource = $this->createFormBuilder($ressource)
-        ->add('titre')
-        ->add('descriptif')
-        ->add('urlRessource')
-        ->add('urlVignette')
-        ->getForm();
+        $formulaireRessource = $this->createForm(RessourceType::class, $ressource);
 
         /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
         dans cette requête contient des variables titre, descriptif, etc. alors la méthode handleRequest()
@@ -67,13 +64,8 @@ class OpenclassdutController extends AbstractController
      */
     public function modifierRessource(Request $request, ObjectManager $manager, Ressource $ressource)
     {
-        // Création du formulaire permettant de saisir une ressource
-        $formulaireRessource = $this->createFormBuilder($ressource)
-        ->add('titre')
-        ->add('descriptif')
-        ->add('urlRessource')
-        ->add('urlVignette')
-        ->getForm();
+        // Création du formulaire permettant de modifier une ressource
+        $formulaireRessource = $this->createForm(RessourceType::class, $ressource);
 
         /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
         dans cette requête contient des variables titre, descriptif, etc. alors la méthode handleRequest()
