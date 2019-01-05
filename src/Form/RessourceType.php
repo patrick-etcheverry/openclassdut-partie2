@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\TypeRessource;
+use App\Entity\Module;
 
 class RessourceType extends AbstractType
 {
@@ -26,7 +27,15 @@ class RessourceType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
             ))
-            ;
+            ->add('modules', EntityType::class, array(
+                'class' => Module::class,
+                'choice_label' => function(Module $module)
+                {return $module->getCode().' '.$module->getTitre();},
+
+                // used to render a select box, check boxes or radios
+                'multiple' => true,
+                'expanded' => true,
+            ))
         ;
     }
 
