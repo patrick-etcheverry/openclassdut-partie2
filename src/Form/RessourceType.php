@@ -19,14 +19,7 @@ class RessourceType extends AbstractType
             ->add('descriptif')
             ->add('urlRessource')
             ->add('urlVignette')
-            ->add('typeRessource', EntityType::class, array(
-                'class' => TypeRessource::class,
-                'choice_label' => 'nomType',
-
-                // used to render a select box, check boxes or radios
-                'multiple' => false,
-                'expanded' => true,
-            ))
+            ->add('typeRessource', TypeRessourceType::class)
             ->add('modules', EntityType::class, array(
                 'class' => Module::class,
                 'choice_label' => function(Module $module)

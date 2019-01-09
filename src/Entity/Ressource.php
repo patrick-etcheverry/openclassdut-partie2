@@ -44,7 +44,7 @@ class Ressource
     private $urlVignette;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeRessource", inversedBy="ressources")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeRessource", inversedBy="ressources", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $typeRessource;
