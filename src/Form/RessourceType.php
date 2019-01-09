@@ -19,6 +19,7 @@ class RessourceType extends AbstractType
             ->add('descriptif')
             ->add('urlRessource')
             ->add('urlVignette')
+/*
             ->add('typeRessource', EntityType::class, array(
                 'class' => TypeRessource::class,
                 'choice_label' => 'nomType',
@@ -36,6 +37,7 @@ class RessourceType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ))
+*/            
         ;
     }
 
