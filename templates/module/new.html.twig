@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}Créer un nouveau module{% endblock %}
+
+{% block contenuPage %}
+
+    {{ include('module/_form.html.twig') }}
+
+    <a href="{{ path('module_index') }}">Retour à la liste</a>
+{% endblock %}

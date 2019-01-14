@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}Liste des modules{% endblock %}
+
+{% block contenuPage %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Titre</th>
+                <th>Semestre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.id }}</td>
+                <td>{{ module.code }}</td>
+                <td>{{ module.titre }}</td>
+                <td>{{ module.semestre }}</td>
+                <td>
+                    <a href="{{ path('module_show', {'id': module.id}) }}">Consulter</a>
+                    <a href="{{ path('module_edit', {'id': module.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun module enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('module_new') }}">Créer un nouveau module</a>
+{% endblock %}

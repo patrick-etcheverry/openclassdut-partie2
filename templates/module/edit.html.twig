@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block titrePage %}Editer un module{% endblock %}
+
+{% block contenuPage %}
+
+    {{ include('module/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('module_index') }}">Retour à la liste des modules</a>
+
+    {{ include('module/_delete_form.html.twig') }}
+{% endblock %}

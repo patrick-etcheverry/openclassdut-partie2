@@ -56,7 +56,7 @@ class Ressource
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
-     * @Assert\Url       
+     * @Assert\Url
      */
     private $urlVignette;
 
@@ -177,5 +177,10 @@ class Ressource
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+      return $this->getTitre();
     }
 }
