@@ -7,11 +7,30 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Module;
 use App\Entity\Ressource;
 use App\Entity\TypeRessource;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+
+        // Création de 2 utilisateurs de test
+        $patrick = new User();
+        $patrick->setPrenom("Patrick");
+        $patrick->setNom("Etcheverry");
+        $patrick->setEmail("patrick@free.fr");
+        $patrick->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $patrick->setPassword('$2y$10$qDhA9hKYFXAHIqRUEGNlB..argVgjrDvxysv3BgrTVJWzM/tOBIjy');
+        $manager->persist($patrick);
+
+        $pantxika = new User();
+        $pantxika->setPrenom("Pantxika");
+        $pantxika->setNom("Dagorret");
+        $pantxika->setEmail("pantxika@free.fr");
+        $pantxika->setRoles(['ROLE_USER']);
+        $pantxika->setPassword('$2y$10$GsT9AtTmnPvTrnxDDYgMwev25YOnCbVXTm32jkpjodlyn6QUip4M6');
+        $manager->persist($pantxika);
+
         /* Création d'un générateur de données à partir de la classe Faker*/
         $faker = \Faker\Factory::create('fr_FR');
 
