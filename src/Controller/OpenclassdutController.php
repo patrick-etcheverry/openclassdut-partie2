@@ -42,7 +42,7 @@ class OpenclassdutController extends AbstractController
         récupère les valeurs de ces variables et les affecte à l'objet $ressource*/
         $formulaireRessource->handleRequest($request);
 
-         if ($formulaireRessource->isSubmitted() )
+         if ($formulaireRessource->isSubmitted() && $formulaireRessource->isValid())
          {
             // Mémoriser la date d'ajout de la ressources
             $ressource->setDateAjout(new \dateTime());
