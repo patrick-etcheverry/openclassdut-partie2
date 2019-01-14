@@ -62,7 +62,7 @@ class Ressource
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeRessource", inversedBy="ressources")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $typeRessource;
 
