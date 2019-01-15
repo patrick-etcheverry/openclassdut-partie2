@@ -15,7 +15,10 @@ security:
 
             # activate different ways to authenticate
 
-            http_basic: true
+            #http_basic: true
+            guard:
+                authenticators:
+                    - App\Security\FormulaireLoginAuthenticator
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
 
             # form_login: true
@@ -33,4 +36,3 @@ security:
             cost:      15
         App\Entity\User:
             algorithm: bcrypt
-
