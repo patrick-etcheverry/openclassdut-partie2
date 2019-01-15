@@ -12,6 +12,8 @@ security:
             security: false
         main:
             anonymous: true
+            logout:
+                path:   app_logout
 
             # activate different ways to authenticate
 
