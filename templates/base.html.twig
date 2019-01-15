@@ -130,6 +130,11 @@
                       {% else %}
                       {# Fonctionnalités pour l'utilsateur NON authentifié #}
                       <li class="nav-item active">
+                        <a class="nav-link" href="{{path('app_inscription')}}">
+                          Inscription
+                          <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item active">
                         <a class="nav-link" href="{{path('app_login')}}">
                           <i class="icon-user"></i>
                           Connexion
