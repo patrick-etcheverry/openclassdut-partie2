@@ -4,3 +4,4 @@ easy_admin:
        - App\Entity\Ressource
        - App\Entity\TypeRessource
        - App\Entity\Module
+       - App\Entity\User       

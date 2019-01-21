@@ -97,4 +97,12 @@ class TypeRessource
 
         return $this;
     }
+
+    public function __toString()
+    {
+      return $this->getNomType();
+    }
+
+
+
 }
